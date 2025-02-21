@@ -1,20 +1,13 @@
-# amazon-kindle-backup
+# Amazon Kindle Backup Tool
 
 This is a Kindle backup tool that downloads all your Kindle books and saves them to a local directory.
 
 ## Usage
 
 1. First remove any/all passkeys from your Amazon account. The appearance of a passkey will cause the script to fail.
-2. Make a copy of `.env` as `.env.local` file in the root directory with your content as defined below.:
-
-```
-AMAZON_EMAIL: Your email
-AMAZON_PASSWORD: Your amazon password. Enclose in double quotes if it contains special characters. Some characters may need to be escaped with a \ (ex. $).
-OUTPUT_DIR: The directory where you want to save the books. Default is `./books`.
-SHOW_BROWSER: Set to `true` to show the browser window. Default is `false`. Useful for debugging.
-```
-
-3. Install dependencies:
+2. Install [bun](https://bun.sh/) if you haven't already.
+3. Update the .env file with your desired settings
+4. Install all the dependencies:
 
 ```bash
 bun install
@@ -23,12 +16,15 @@ bun install
 4. To run:
 
 ```bash
-bun run index.ts
+bun start
 ```
 
 # Notes
 
-It will prompt for your OTP token if you have 2FA enabled. You will also be asked to choose your device if you have multiple devices.
+- It will prompt for your OTP token if you have 2FA enabled.
+- You will also be asked to choose your device if you have multiple devices.
+- This code comes with no warranty. Use at your own risk.
+- This code is not affiliated with Amazon in any way. It is a personal project that I use to backup my Kindle books.
 
 # Troubleshooting
 
