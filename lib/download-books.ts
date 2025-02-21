@@ -57,10 +57,27 @@ async function downloadFile(
       let filename = `${asin}.azw`;
 
       if (contentDisposition) {
-        const matches = contentDisposition.match(/filename\*=UTF-8''(.+)/i);
-        if (matches && matches[1]) {
-          // Replace forward slashes and backslashes with underscores
-          filename = decodeURIComponent(matches[1]).replace(/[\/\\]/g, "_");
+        // Function to sanitize filename
+        const sanitizeFilename = (name: string) => {
+          // Replace invalid characters with underscore
+          // This includes: / \ ? % * : | " < > . and control characters
+          return name
+            .replace(/[/\\?%*:|"<>\x00-\x1F]/g, "_")
+            .trim()
+            .replace(/^\.+/, "") // Remove leading periods
+            .replace(/\.+$/, ""); // Remove trailing periods
+        };
+
+        // Try to get the plain filename first
+        const plainMatch = contentDisposition.match(/filename=([^;]+)/);
+        if (plainMatch && plainMatch[1]) {
+          filename = sanitizeFilename(plainMatch[1]);
+        } else {
+          // Fall back to UTF-8 filename if plain one isn't available
+          const utf8Match = contentDisposition.match(/filename\*=UTF-8''(.+)/i);
+          if (utf8Match && utf8Match[1]) {
+            filename = sanitizeFilename(decodeURIComponent(utf8Match[1]));
+          }
         }
       }
 
