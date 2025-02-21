@@ -7,13 +7,13 @@ This is a Kindle backup tool that downloads all your Kindle books and saves them
 1. First remove any/all passkeys from your Amazon account. The appearance of a passkey will cause the script to fail.
 2. Install [bun](https://bun.sh/) if you haven't already.
 3. Update the .env file with your desired settings
-4. Install all the dependencies:
+4. Open a terminal and install all the dependencies by running:
 
 ```bash
 bun install
 ```
 
-4. To run:
+4. To run the script:
 
 ```bash
 bun start
