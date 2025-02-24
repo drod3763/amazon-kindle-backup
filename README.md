@@ -1,3 +1,5 @@
+- NO LONGER WORKS. Over the past weekend (02/22/2025-02/23/2025) Amazon added HMAC signature verification to the download urls. Rather than rewrite the script, I would suggest using another one that clicks the download links via the browser.
+
 # Kindle eBook Bulk Downloader
 
 This is a script that downloads all your Kindle books and saves them to a local directory.
